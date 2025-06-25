@@ -7,14 +7,31 @@ This is a layered .NET 6+ API project following N-Tier architecture with Postgre
 - `APP.BLL` – Business Logic Layer
 - `APP.DAL` – Data Access Layer (DbContext, Models, EF Migrations)
 
----
+## 🐳 Prerequisites
 
-## 🐘 PostgreSQL with Docker
+- [.NET 8 SDK](https://dotnet.microsoft.com/)
+- [Docker](https://www.docker.com/)
+- [EF Core CLI](https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
 
-Start PostgreSQL and pgAdmin using Docker:
+## 🚀 Getting Started
+
+### 1. Clone and Build the Project
 
 ```bash
-docker-compose up -d
+git clone https://github.com/alishafidev/N-Tier-Architecture.git
+cd yourrepo
+```
+
+## Run Migrations
+
+```bash
+docker-compose run --rm migrate
+```
+
+## Start All Services
+
+```bash
+docker-compose up --build
 ```
 
 ```txt

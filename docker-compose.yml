@@ -18,5 +18,17 @@ services:
     ports:
       - "8080:8080"
 
+  app-api:
+    build:
+      context: .
+      dockerfile: APP.API/Dockerfile
+    depends_on:
+      - postgres
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: "Host=postgres;Database=myappdb;Username=postgres;Password=postgres"
+    ports:
+      - "5009:5009"
+
 volumes:
   pgdata:

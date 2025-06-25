@@ -7,14 +7,14 @@ namespace APP.API.Controllers;
 [ApiController]
 public class BookController(IBookService _bookService) : ControllerBase
 {
-    [HttpGet("books")]
+    [HttpGet]
     public async Task<IActionResult> GetBooks()
     {
         var books = await _bookService.GetAllBooksAsync();
         return Ok(books);
     }
 
-    [HttpGet("books/{id}")]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetBook(int id)
     {
         var book = await _bookService.GetBookByIdAsync(id);
@@ -25,7 +25,7 @@ public class BookController(IBookService _bookService) : ControllerBase
         return Ok(book);
     }
 
-    [HttpPost("books")]
+    [HttpPost]
     public async Task<IActionResult> CreateBook([FromBody] Book book)
     {
         if (!ModelState.IsValid)
@@ -37,7 +37,7 @@ public class BookController(IBookService _bookService) : ControllerBase
         return CreatedAtAction(nameof(GetBook), new { id = createdBook.Id }, createdBook);
     }
 
-    [HttpPut("books/{id}")]
+    [HttpPut("{id}")]
     public async Task<IActionResult> UpdateBook(int id, [FromBody] Book book)
     {
         if (id != book.Id || !ModelState.IsValid)
@@ -54,7 +54,7 @@ public class BookController(IBookService _bookService) : ControllerBase
         return Ok(updatedBook);
     }
 
-    [HttpDelete("books/{id}")]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteBook(int id)
     {
         var deleted = await _bookService.DeleteBookAsync(id);
